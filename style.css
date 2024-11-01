@@ -1,0 +1,194 @@
+html {
+    height: 100%;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #D5D4C8;
+    /* background-color: #CCCCC4; */
+    /* background-color: #2E2E3A; */
+
+}
+
+nav{
+    background-color: #2E2E3A;
+}
+
+body{
+    margin: 0px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /* background-color: #333333; */
+    color: white;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    /* background-color: #111111; */
+}
+
+#teaneck{
+    font-size: 20px;
+}
+
+#book_bar{
+    background-color: #972D07;
+    padding: 10px;
+}
+
+.book{
+    margin: 22px;
+}
+
+.bookTitle{
+    font-size: 20px;
+    margin-right: 8px;
+    color: beige;
+}
+
+#info{
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    font-size: 20px;
+}
+
+#notecard{
+    background-color:beige;
+    margin: 1%;
+    padding: 1%;
+    border-radius: 25px;
+    font-size: 50px;
+    text-align: center;
+    height: 68%;
+    display: flex;
+    flex-direction: column; /* Arrange the question and answer vertically */
+    align-items: center;    /* Center horizontally */
+    justify-content: center; /* Center vertically */
+}
+
+.q_a{
+    display: flex;
+    height: 38%;
+    justify-content: center;  /* Center text horizontally */
+    align-items: center;      /* Center text vertically */
+}
+
+.q_a_text{
+    vertical-align: middle;
+}
+
+.dotted_line {
+    border: none;             /* Remove default hr styling */
+    border-top: 2px dashed darkgrey; /* Create a 2px high dotted line in black */
+    width: 100%;              /* Full width */
+    margin: 20px 0;           /* Add space above and below the line */
+}
+
+#startButton {
+    font-size: 50px;
+}
+
+#controls {
+    /* background-color: #2E2E3A; */
+    height: auto;
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+
+/* CSS */
+.button-74 {
+  background-color: #972D07;
+  border: 2px solid #2E2E3A;
+  border-radius: 30px;
+  box-shadow: #2E2E3A 4px 4px 0 0;
+  color: beige;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 75px;
+  padding: 30px 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-74:hover {
+  background-color: #fff;
+  color: #2E2E3A;
+}
+
+.button-74:active {
+  box-shadow: #2E2E3A 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+#controls button {
+    background-color: #972D07;
+    border: 2px solid #2E2E3A;
+    border-radius: 10px;
+    box-shadow: #2E2E3A 3px 3px 0 0;
+    color: beige;
+    cursor: pointer;
+    font-size: 35px;
+    height: 55px;
+
+
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+
+}
+
+#controls button:hover{
+    background-color: #fff;
+    color: #2E2E3A;
+}
+
+#shuffle_button.clicked {
+    background-color: #760c0c;
+}
+
+#shuffle_button.clicked:hover{
+    background-color: #fff;
+    color: #2E2E3A;
+}
+
+/* @media (min-width: 768px) {
+  .button-74 {
+    min-width: 120px;
+    padding: 0 25px;
+  }
+} */
+
+#left_button,#right_button {
+    width: 65px;
+}
+
+#answer_button{
+    width: 250px;
+}
+#shuffle_button{
+    width: 175px
+}
