@@ -186,7 +186,7 @@ class Controls {
     space(){
         if (!started) return;
 
-        answer.textContent = questionBank[Seq.i()][A];
+        answer.textContent = capitalizeFirstLetter(questionBank[Seq.i()][A]);
     }
     shuffle(){
         if (!started) return;
@@ -240,3 +240,7 @@ document.addEventListener('keydown', function(event) {
         console.log("H");
     }
 });
+
+function capitalizeFirstLetter(val) {
+    return String(val).charAt(0).toUpperCase() + String(val).slice(1);
+}
