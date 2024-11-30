@@ -13,9 +13,9 @@
         <nav>
             <ul>
                 <li id="teaneck"><a>Teaneck BB</a></li>
-                <li><a href="#">Link 1</a></li>
+                <!-- <li><a href="#">Link 1</a></li>
                 <li><a href="#">Link 2</a></li>
-                <li><a href="#">Link 3</a></li>
+                <li><a href="#">Link 3</a></li> -->
             </ul>
             <ul id="book_bar">
                 <span class="book">
@@ -50,26 +50,44 @@
                     <label for="book4max">To</label>
                     <input type="number" id="book4max" name="book4max" min="1" max="10" value="10">
                 </span>
+                <button class="green_button" onclick="Ctrl.start()">Start</button>
             </ul>
         </nav>
     </header>
     <div id="info">
         <span id="infoText"></span>
     </div>
-    <div id="notecard">
-        <div id="question" class="q_a">
-            <span id="q_text" class="q_a_text">Set the books and chapters <br> [SPACE] to show answer [->] to go to next question</span>
+    <div id="notecard_container">
+        <div id="notecard">
+            <div id="question" class="q_a">
+                <span id="q_text" class="q_a_text">Set the books and chapters above<br> <span id="keyboard_instructions">[SPACE] to show answer [->] to go to next question [h] to shuffle [d] to drop question</span></span>
+            </div>
+            <hr class="dotted_line">
+            <div id="answer" class="q_a">
+                <span id="a_text" class="q_a_text red_button"><button id="start_button" onclick="Ctrl.start()">Start</button></span>
+            </div>
         </div>
-        <hr class="dotted_line">
-        <div id="answer" class="q_a">
-            <span id="a_text" class="q_a_text"><button class="button-74" onclick="start()">Start</button></span>
+        <div id="blank" class="hide">
+            
+        </div>
+        <div id="finish">
+            <span id="finishText">You've completed this question set!
+                <br>Questions reviewed: ___
+                <br>Questions dropped: ___
+                <br> Would you like to
+                <br>    &emsp; Review the undropped questions?
+                <br>    &emsp; Review all the questions?
+                <br>    &emsp; Change the chapters at the top?</span>
+            <div><button class="green_button" onclick="Ctrl.reUndropped()">Review Undropped</button></div>
+            <div><button class="green_button" onclick="Ctrl.reAll()">Review All</button></div>
         </div>
     </div>
-    <div id="controls">
+    <div id="controls" class="red_button">
         <span id="left_arrow"><button id="left_button" onclick="Ctrl.left()">←</button></span>
         <span id="show_answer"><button id="answer_button" onclick="Ctrl.space()">Show Answer</button></span>
         <span id="right_arrow"><button id="right_button" onclick="Ctrl.right()">→</button></span>
         <span id="shuffle"><button id="shuffle_button" onclick="Ctrl.shuffle()">Shuffle</button></span>
+        <span id="drop"><button id="drop_button" onclick="Ctrl.drop()">Drop</button></span>
     </div>
 </body>
 </html>

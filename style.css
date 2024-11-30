@@ -1,3 +1,7 @@
+/* 
+General 
+*/
+
 html {
     height: 100%;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -14,6 +18,10 @@ nav{
 body{
     margin: 0px;
 }
+
+/* 
+Header 
+*/
 
 ul {
     list-style-type: none;
@@ -47,6 +55,7 @@ li a:hover {
 #book_bar{
     background-color: #972D07;
     padding: 10px;
+    font-size: 20px;
 }
 
 .book{
@@ -54,10 +63,13 @@ li a:hover {
 }
 
 .bookTitle{
-    font-size: 20px;
     margin-right: 8px;
     color: beige;
 }
+
+/* 
+Note Card
+*/
 
 #info{
     height: 25px;
@@ -67,18 +79,14 @@ li a:hover {
     font-size: 20px;
 }
 
-#notecard{
-    background-color:beige;
-    margin: 1%;
-    padding: 1%;
-    border-radius: 25px;
-    font-size: 50px;
-    text-align: center;
+#keyboard_instructions{
+    color: rgb(85, 85, 85);
+}
+
+#notecard_container{
     height: 68%;
-    display: flex;
-    flex-direction: column; /* Arrange the question and answer vertically */
-    align-items: center;    /* Center horizontally */
-    justify-content: center; /* Center vertically */
+    margin: 1%;
+    position: relative;
 }
 
 .q_a{
@@ -99,51 +107,82 @@ li a:hover {
     margin: 20px 0;           /* Add space above and below the line */
 }
 
+#notecard{
+    top: 0;
+    left: 0;
+    position: absolute;
+
+    background-color:beige;
+    border-radius: 25px;
+    padding: 1%;
+    height: 95%;
+    width: 98%;
+    font-size: 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Arrange the question and answer vertically */
+    align-items: center;    /* Center horizontally */
+    justify-content: center; /* Center vertically */
+}
+
+/* Notecard animation */
+#blank{
+    top: 0;
+    left: 0;
+    position: absolute;
+    
+    background-color:beige;
+    border-radius: 25px;
+    padding: 1%;
+    height: 95%;
+    width: 98%;
+    opacity: 0;
+}
+
+.fade_in_out{
+    z-index: 10;
+    -webkit-animation: fadeinout .5s linear forwards;
+    animation: fadeinout .5s linear forwards;
+}
+
+@-webkit-keyframes fadeinout {
+    0%,100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+  
+@keyframes fadeinout {
+    0%,100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+.hide{
+    z-index: -10;
+}
+
+.show{
+    opacity: 1;
+}
+
+/* 
+Buttons and UI
+*/
+
+/* For Notecard */
 #startButton {
     font-size: 50px;
 }
 
+/* For Controls */
 #controls {
     /* background-color: #2E2E3A; */
     height: auto;
-    width: 600px;
+    width: 700px;
     display: flex;
     justify-content: space-between;
     margin: auto;
 }
 
-
-/* CSS */
-.button-74 {
-  background-color: #972D07;
-  border: 2px solid #2E2E3A;
-  border-radius: 30px;
-  box-shadow: #2E2E3A 4px 4px 0 0;
-  color: beige;
-  cursor: pointer;
-  display: inline-block;
-  font-weight: 600;
-  font-size: 75px;
-  padding: 30px 18px;
-  line-height: 50px;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.button-74:hover {
-  background-color: #fff;
-  color: #2E2E3A;
-}
-
-.button-74:active {
-  box-shadow: #2E2E3A 2px 2px 0 0;
-  transform: translate(2px, 2px);
-}
-
-#controls button {
+.red_button button {
     background-color: #972D07;
     border: 2px solid #2E2E3A;
     border-radius: 10px;
@@ -161,11 +200,67 @@ li a:hover {
 
 }
 
-#controls button:hover{
+.red_button button:hover{
     background-color: #fff;
     color: #2E2E3A;
 }
 
+#start_button {
+  border-radius: 30px;
+  box-shadow: #2E2E3A 4px 4px 0 0;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 75px;
+  padding: 30px 18px;
+  line-height: 50px;
+  text-align: center;
+  height: auto;
+
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+/* During the clicking, unique to start button */
+#start_button:active {
+  box-shadow: #2E2E3A 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+#finish{
+    z-index: -5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;    /* Center horizontally */
+    justify-content: center; /* Center vertically */
+
+    color: black;
+    background-color: #D5D4C8;
+    border-radius: 25px;
+    padding: 1%;
+    height: 95%;
+    width: 98%;
+}
+
+
+#finishText{
+    font-size: 30px;
+    display: flex;
+    justify-content: center; /* Center vertically */
+    margin-bottom: 10px;
+
+}
+
+#finish button {
+    font-size: 30px;
+    margin: 5px;
+    border-radius: 10px;
+    height: 55px;
+    width: 300px;
+}
+
+/* Bottom Buttons */
 #shuffle_button.clicked {
     background-color: #0C7C59;
 }
@@ -175,12 +270,6 @@ li a:hover {
     color: #2E2E3A;
 }
 
-/* @media (min-width: 768px) {
-  .button-74 {
-    min-width: 120px;
-    padding: 0 25px;
-  }
-} */
 
 #left_button,#right_button {
     width: 65px;
@@ -191,4 +280,33 @@ li a:hover {
 }
 #shuffle_button{
     width: 175px
+}
+#drop_button{
+    width: 100px
+}
+
+.green_button {
+    background-color: #0C7C59;
+    border: 2px solid #2E2E3A;
+    color: beige;
+    cursor: pointer;
+    box-shadow: #2E2E3A 3px 3px 0 0;
+    
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.green_button:hover{
+    background-color: #fff;
+    color: #2E2E3A;
+}
+
+/* Top bookbard start button */
+#book_bar button {
+    border-radius: 10px;
+    font-size: 20px;
+    height: 40px;
+
 }
