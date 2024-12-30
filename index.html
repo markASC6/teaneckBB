@@ -11,20 +11,21 @@
 <body>
     <header>
         <nav>
-            <ul>
+            <ul id="top_header" class="headers">
                 <li id="teaneck"><a>Teaneck BB</a></li>
-                <!-- <li><a href="#">Link 1</a></li>
-                <li><a href="#">Link 2</a></li>
+                <li><a href="https://docs.google.com/document/d/1xZjhAgM6ml43Y7dmH5Wpea3mLNmMMN9rire9coTg3gk/edit?usp=sharing">Schedule</a></li>
+                <!-- <li><a href="#">Link 2</a></li>
                 <li><a href="#">Link 3</a></li> -->
             </ul>
-            <ul id="book_bar">
+            <ul id="book_bar" class="headers">
+                <button class="green_button" id="book_start" onclick="Ctrl.start()">Start</button>
                 <span class="book">
                     <input type="checkbox" id="book1" name="book1" value="Exodus" checked>
                     <label for="book1" class="bookTitle">Exodus</label>
                     <label for="book1min">From</label>
-                    <input type="number" id="book1min" name="book1min" min="1" max="40" value="13">
+                    <input type="number" id="book1min" name="book1min" min="1" max="40" value="7">
                     <label for="book1max">To</label>
-                    <input type="number" id="book1max" name="book1max" min="1" max="40" value="20">
+                    <input type="number" id="book1max" name="book1max" min="1" max="40" value="12">
                 </span>
                 <span class="book">
                     <input type="checkbox" id="book2" name="book2" value="John">
@@ -50,7 +51,6 @@
                     <label for="book4max">To</label>
                     <input type="number" id="book4max" name="book4max" min="1" max="10" value="1">
                 </span>
-                <button class="green_button" onclick="Ctrl.start()">Start</button>
             </ul>
         </nav>
     </header>
