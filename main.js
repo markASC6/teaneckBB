@@ -25,23 +25,21 @@ const EXODUS = 0;
 const JOHN = 1;
 const ROMANS = 2;
 const ESTHER = 3;
-const MAX_CHAPTER_1 = 40;
-const MAX_CHAPTER_2 = 21;
-const MAX_CHAPTER_3 = 16;
-const MAX_CHAPTER_4 = 10;
+const MAX_CHAPTER = [40, 21, 16, 10];
 
 const EXODUS_CSV = 'data/exodusSample.csv';
+const JOHN_CSV = 'data/johnSample.csv';
 
 // PRE-PROCESSING
 
 let questionSet = [[],[],[],[]];
-questionSet[EXODUS] = Array(MAX_CHAPTER_1).fill().map(() => []);     // array of empty arrays with one for each chapter
-questionSet[JOHN] = Array(MAX_CHAPTER_2).fill().map(() => []);
-questionSet[ROMANS] = Array(MAX_CHAPTER_3).fill().map(() => []);
-questionSet[ESTHER] = Array(MAX_CHAPTER_4).fill().map(() => []);
+questionSet[EXODUS] = Array(MAX_CHAPTER[0]).fill().map(() => []);     // array of empty arrays with one for each chapter
+questionSet[JOHN] = Array(MAX_CHAPTER[1]).fill().map(() => []);
+questionSet[ROMANS] = Array(MAX_CHAPTER[2]).fill().map(() => []);
+questionSet[ESTHER] = Array(MAX_CHAPTER[3]).fill().map(() => []);
 console.log(questionSet);
 
-function fetchQuestions(q_csv, book=EXODUS){
+function fetchQuestions(q_csv, book){
     fetch(q_csv)
         .then(response => {
             if (!response.ok) {
@@ -59,8 +57,8 @@ function fetchQuestions(q_csv, book=EXODUS){
                     let questions = results.data;
                     for (let i = 0; i < questions.length; i++){
                         let chapter = parseInt(questions[i][CH]);
-                        if (!chapter) chapter = MAX_CHAPTER_1;  // if no chapter is listed, add it to the last chapter in the book
-                        questionSet[EXODUS][chapter - 1].push(questions[i])     // add question to array for chapter in book
+                        if (!chapter) chapter = MAX_CHAPTERS[book];  // if no chapter is listed, add it to the last chapter in the book
+                        questionSet[book][chapter - 1].push(questions[i])     // add question to array for chapter in book
                     }
                 },
                 error: function(err) {
@@ -73,6 +71,7 @@ function fetchQuestions(q_csv, book=EXODUS){
         });
 }
 fetchQuestions(EXODUS_CSV, EXODUS);
+fetchQuestions(JOHN_CSV, JOHN);
 
 
 // USER INTERACTION
@@ -194,11 +193,22 @@ class Controls {
         let isExodus = document.getElementById('book1').checked;
         let exodusMin = parseInt(document.getElementById('book1min').value);
         let exodusMax = parseInt(document.getElementById('book1max').value);
-        console.log(isExodus, exodusMin, exodusMax)
-    
-        // Move specified questions from question set to question bank
-        for (let i = exodusMin - 1; i <= exodusMax - 1; i++){
-            questionBank = questionBank.concat(questionSet[EXODUS][i]);
+
+        let isJohn = document.getElementById('book2').checked;
+        let johnMin = parseInt(document.getElementById('book2min').value);
+        let johnMax = parseInt(document.getElementById('book2max').value);
+
+        
+        if (isExodus){
+            // Move specified questions from question set to question bank
+            for (let i = exodusMin - 1; i <= exodusMax - 1; i++){
+                questionBank = questionBank.concat(questionSet[EXODUS][i]);
+            }
+        }
+        if (isJohn){
+            for (let i = johnMin - 1; i <= johnMax - 1; i++){
+                questionBank = questionBank.concat(questionSet[JOHN][i]);
+            }
         }
         questionStock = questionBank.slice();    // shallow copy
     
