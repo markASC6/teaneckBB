@@ -29,6 +29,8 @@ const MAX_CHAPTER = [40, 21, 16, 10];
 
 const EXODUS_CSV = 'data/exodusSample.csv';
 const JOHN_CSV = 'data/johnSample.csv';
+const ROMANS_CSV = 'data/romansSample.csv';
+const ESTHER_CSV = 'data/estherSample.csv';
 
 // PRE-PROCESSING
 
@@ -72,6 +74,8 @@ function fetchQuestions(q_csv, book){
 }
 fetchQuestions(EXODUS_CSV, EXODUS);
 fetchQuestions(JOHN_CSV, JOHN);
+fetchQuestions(ROMANS_CSV, ROMANS);
+fetchQuestions(ESTHER_CSV, ESTHER);
 
 
 // USER INTERACTION
@@ -198,6 +202,14 @@ class Controls {
         let johnMin = parseInt(document.getElementById('book2min').value);
         let johnMax = parseInt(document.getElementById('book2max').value);
 
+        let isRomans = document.getElementById('book3').checked;
+        let romansMin = parseInt(document.getElementById('book3min').value);
+        let romansMax = parseInt(document.getElementById('book3max').value);
+        
+        let isEsther = document.getElementById('book4').checked;
+        let estherMin = parseInt(document.getElementById('book4min').value);
+        let estherMax = parseInt(document.getElementById('book4max').value);
+
         
         if (isExodus){
             // Move specified questions from question set to question bank
@@ -208,6 +220,16 @@ class Controls {
         if (isJohn){
             for (let i = johnMin - 1; i <= johnMax - 1; i++){
                 questionBank = questionBank.concat(questionSet[JOHN][i]);
+            }
+        }
+        if (isRomans){
+            for (let i = romansMin - 1; i <= romansMax - 1; i++){
+                questionBank = questionBank.concat(questionSet[ROMANS][i]);
+            }
+        }
+        if (isEsther){
+            for (let i = estherMin - 1; i <= estherMax - 1; i++){
+                questionBank = questionBank.concat(questionSet[ESTHER][i]);
             }
         }
         questionStock = questionBank.slice();    // shallow copy

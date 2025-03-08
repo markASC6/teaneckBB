@@ -171,6 +171,11 @@ Note Card
 Buttons and UI
 */
 
+button {
+    transition: background-color .2s,
+        color .2s;
+}
+
 /* For Notecard */
 #startButton {
     font-size: 50px;
