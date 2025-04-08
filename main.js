@@ -80,6 +80,10 @@ fetchQuestions(ESTHER_CSV, ESTHER);
 
 // USER INTERACTION
 
+// Mobile Functionality for the drop settings
+
+
+
 // User picking question bank
 
 let questionBank = [];  // the set of questions that are actually going to be shown
@@ -188,7 +192,7 @@ class Controls {
         this.dropCount = 0;
     }
     
-    
+    // called by "start" buttons
     start(){
         this.started = true;
         questionBank = [];
@@ -249,6 +253,7 @@ class Controls {
 
         this.showQ();
     }
+
     
     left(){
         if (!this.started || this.isFinished) return;
@@ -391,6 +396,46 @@ class Controls {
         Seq.setLength(questionBank.length);
         this.dropCount = 0;
         this.showQ();
+    }
+
+    mobileStart(){
+        this.useMobileSettings();
+        this.hideMobileSettings();
+        this.start();
+    }
+
+    showMobileSettings(){
+        let mobileSettings = document.getElementById("settings");
+        mobileSettings.classList.remove("settings_hide")
+        mobileSettings.classList.add("settings_show")
+        
+    }
+    
+    hideMobileSettings(){
+        let mobileSettings = document.getElementById("settings");
+        mobileSettings.classList.remove("settings_show")
+        mobileSettings.classList.add("settings_hide")
+        
+    }
+
+    // lazy workaround, change the invisible normal user input values to the mobile values, then start like normal
+    useMobileSettings(){
+        
+        document.getElementById('book1').checked = document.getElementById('mobileBook1').checked;
+        document.getElementById('book2').checked = document.getElementById('mobileBook2').checked;
+        document.getElementById('book3').checked = document.getElementById('mobileBook3').checked;
+        document.getElementById('book4').checked = document.getElementById('mobileBook4').checked;
+
+        document.getElementById('book1min').value = document.getElementById('mobileBook1min').value;
+        document.getElementById('book1max').value = document.getElementById('mobileBook1max').value;
+        document.getElementById('book2min').value = document.getElementById('mobileBook2min').value;
+        document.getElementById('book2max').value = document.getElementById('mobileBook2max').value;
+        document.getElementById('book3min').value = document.getElementById('mobileBook3min').value;
+        document.getElementById('book3max').value = document.getElementById('mobileBook3max').value;
+        document.getElementById('book4min').value = document.getElementById('mobileBook4min').value;
+        document.getElementById('book4max').value = document.getElementById('mobileBook4max').value;
+
+        this.start();
     }
 
 }

@@ -322,3 +322,87 @@ button {
     height: 40px;
 
 }
+
+
+/*
+    Mobile Layout
+*/
+
+@media screen and (min-width: 481px){
+    #mobile_change_button {
+        display: none;
+    }
+    .mobile_only {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 480px){
+    #book_bar {
+        display: none;
+    }
+    #mobile_change_button {
+        display: inline;
+        height: 100%;
+        width: 50px;
+        font-size: 20px;
+        margin-left: 10px;
+        margin-bottom: 5px;
+        border-radius: 5px;
+    }
+    #info {
+        justify-content: space-between;
+        padding-right: 15px;
+        height: 35px;
+    }
+    #settings {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        height: 55%;
+        width: 100%;
+        background-color: #0C7C59;
+        color: beige;
+        font-size: 40px;
+        padding: 20px 10px;
+
+
+        position: absolute;
+        
+    }
+    .settings_show {
+        z-index: 5;
+    }
+    .settings_hide {
+        z-index: -10;
+        visibility: hidden;
+    }
+
+    input[input=checkbox]{
+        transform: scale(1.5); /* not working */
+    }
+    .mobileBookHolder{
+        width: 100%;
+        height: 10%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .mobileCheckHolder{
+        display: flex;
+        width: 50%;
+        /* justify-content: space-between; */
+    }
+    .mobileMinMax{
+        display: inline-flex;
+        width: 33%;
+        justify-content: space-between;
+    }
+    #mobileSettingsButtons{
+        display: flex;
+        justify-content: space-around;
+    }
+}
+

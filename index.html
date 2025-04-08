@@ -33,7 +33,7 @@
                     <label for="book2min">From</label>
                     <input type="number" id="book2min" name="book2min" min="1" max="21" value="1">
                     <label for="book2max">To</label>
-                    <input type="number" id="book2max" name="book2max" min="1" max="21" value="21">
+                    <input type="number" id="book2max" name="book2max" min="1" max="21" value="10">
                 </span>
                 <span class="book">
                     <input type="checkbox" id="book3" name="book3" value="Romans">
@@ -41,7 +41,7 @@
                     <label for="book3min">From</label>
                     <input type="number" id="book3min" name="book3min" min="1" max="16" value="1">
                     <label for="book3max">To</label>
-                    <input type="number" id="book3max" name="book3max" min="1" max="16" value="8">
+                    <input type="number" id="book3max" name="book3max" min="1" max="16" value="1">
                 </span>
                 <span class="book">
                     <input type="checkbox" id="book4" name="book4" value="Esther">
@@ -54,7 +54,58 @@
             </ul>
         </nav>
     </header>
+    <div id="settings" class="mobile_only settings_hide">
+        <div class="mobileBookHolder">
+            <span class="mobileCheckHolder">
+                <input type="checkbox" id="mobileBook1" name="mobileBook1" value="Exodus" checked>
+                <label for="mobileBook1" class="mobileBookTitle">Exodus</label>
+            </span>
+            <span class="mobileMinMax">
+                <input type="number" id="mobileBook1min" name="mobileBook1min" min="1" max="40" value="1">
+                <label for="mobileBook1max">to</label>
+                <input type="number" id="mobileBook1max" name="mobileBook1max" min="1" max="40" value="40">
+            </span>
+        </div>
+        <div class="mobileBookHolder">
+            <span class="mobileCheckHolder">
+                <input type="checkbox" id="mobileBook2" name="mobileBook2" value="John" checked>
+                <label for="mobileBook2" class="mobileBookTitle">John</label>
+            </span>
+            <span class="mobileMinMax">
+                <input type="number" id="mobileBook2min" name="mobileBook2min" min="1" max="21" value="1">
+                <label for="mobileBook2max">to</label>
+                <input type="number" id="mobileBook2max" name="mobileBook2max" min="1" max="21" value="21">
+            </span>
+        </div>
+        <div class="mobileBookHolder">
+            <span class="mobileCheckHolder">
+                <input type="checkbox" id="mobileBook3" name="mobileBook3" value="Romans" checked>
+                <label for="mobileBook3" class="mobileBookTitle">Romans</label>
+            </span>
+            <span class="mobileMinMax">
+                <input type="number" id="mobileBook3min" name="mobileBook3min" min="1" max="16" value="1">
+                <label for="mobileBook3max">to</label>
+                <input type="number" id="mobileBook3max" name="mobileBook3max" min="1" max="16" value="16">
+            </span>
+        </div>
+        <div class="mobileBookHolder">
+            <span class="mobileCheckHolder">
+                <input type="checkbox" id="mobileBook4" name="mobileBook4" value="Esther" checked>
+                <label for="mobileBook4" class="mobileBookTitle">Esther</label>
+            </span>
+            <span class="mobileMinMax">
+                <input type="number" id="mobileBook4min" name="mobileBook4min" min="1" max="10" value="1">
+                <label for="mobileBook4max">to</label>
+                <input type="number" id="mobileBook4max" name="mobileBook4max" min="1" max="10" value="10">
+            </span>
+        </div>
+        <div id="mobileSettingsButtons" class="red_button">
+            <button id="mobile_start" onclick="Ctrl.mobileStart()">Start</button>
+            <button id="mobile_close" onclick="Ctrl.hideMobileSettings()">Close</button>
+        </div>
+    </div>
     <div id="info">
+        <button id="mobile_change_button" class="green_button" onclick="Ctrl.showMobileSettings()">☰</button>
         <span id="infoText"></span>
     </div>
     <div id="notecard_container">
