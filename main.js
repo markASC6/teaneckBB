@@ -171,6 +171,10 @@ class Sequence {
         // if you dropped the last card
         if (this.curr == this.length) this.curr--;
     }
+    // randomLimit(limit = 100){
+    //     this.shuffle();
+
+    // }
 }
 
 Seq = new Sequence();
@@ -214,6 +218,9 @@ class Controls {
         let estherMin = parseInt(document.getElementById('book4min').value);
         let estherMax = parseInt(document.getElementById('book4max').value);
 
+        let isLimited = document.getElementById('qLimit').checked;
+        let qLimit = document.getElementById('qLimitNum').value;
+
         
         if (isExodus){
             // Move specified questions from question set to question bank
@@ -236,6 +243,12 @@ class Controls {
                 questionBank = questionBank.concat(questionSet[ESTHER][i]);
             }
         }
+        if (isLimited){
+            if (qLimit < questionBank.length){
+                questionBank = randomSubset(questionBank, qLimit);
+            }
+        }
+
         questionStock = questionBank.slice();    // shallow copy
     
         this.isFinished = false;
@@ -435,6 +448,9 @@ class Controls {
         document.getElementById('book4min').value = document.getElementById('mobileBook4min').value;
         document.getElementById('book4max').value = document.getElementById('mobileBook4max').value;
 
+        document.getElementById('qLimit').checked = document.getElementById('mobileQLimit').checked;
+        document.getElementById('qLimitNum').value = document.getElementById('mobileQLimitNum').value;
+
         this.start();
     }
 
@@ -465,4 +481,27 @@ document.addEventListener('keydown', function(event) {
 
 function capitalizeFirstLetter(val) {
     return String(val).charAt(0).toUpperCase() + String(val).slice(1);
+}
+
+function randomSubset(arr, n){
+    if (n >= arr.length) return arr.slice;
+    ans = arr.slice();
+    // Fisher-Yates to randomize until you have n
+    let i;
+    let m = arr.length; // last unshuffled element
+    while (m > ans.length - n){
+        // pick rand and swap with last in unrandomized     [1, 3, 4, 7, | 5, 6, 2]
+        i = randInt(m);
+        let swap = ans[i];
+        ans[i] = ans[m - 1];
+        ans[m - 1] = swap;
+        m--;
+    }
+    // n number of elements from the back
+    ans = ans.slice(-1 * n)
+    return ans;
+}
+
+function randInt(n){
+    return Math.floor(Math.random() * n);
 }
