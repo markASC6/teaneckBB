@@ -25,12 +25,20 @@ const EXODUS = 0;
 const JOHN = 1;
 const ROMANS = 2;
 const ESTHER = 3;
-const MAX_CHAPTER = [40, 21, 16, 10];
+const JONAH = 4;
+const FIRST_TIMOTHY = 5;
+const SECOND_TIMOTHY = 6;
+const COLOSSIANS = 7;
+const MAX_CHAPTER = [40, 21, 16, 10, 4, 6, 4, 4];
 
 const EXODUS_CSV = 'data/exodusSample.csv';
 const JOHN_CSV = 'data/johnSample.csv';
 const ROMANS_CSV = 'data/romansSample.csv';
 const ESTHER_CSV = 'data/estherSample.csv';
+const JONAH_CSV = 'data/jonahSample.csv';
+const FIRST_TIMOTHY_CSV = 'data/firstTimothySample.csv';
+const SECOND_TIMOTHY_CSV = 'data/secondTimothySample.csv';
+const COLOSSIANS_CSV = 'data/colossiansSample.csv';
 
 // PRE-PROCESSING
 
@@ -39,6 +47,10 @@ questionSet[EXODUS] = Array(MAX_CHAPTER[0]).fill().map(() => []);     // array o
 questionSet[JOHN] = Array(MAX_CHAPTER[1]).fill().map(() => []);
 questionSet[ROMANS] = Array(MAX_CHAPTER[2]).fill().map(() => []);
 questionSet[ESTHER] = Array(MAX_CHAPTER[3]).fill().map(() => []);
+questionSet[JONAH] = Array(MAX_CHAPTER[4]).fill().map(() => []);
+questionSet[FIRST_TIMOTHY] = Array(MAX_CHAPTER[5]).fill().map(() => []);
+questionSet[SECOND_TIMOTHY] = Array(MAX_CHAPTER[6]).fill().map(() => []);
+questionSet[COLOSSIANS] = Array(MAX_CHAPTER[7]).fill().map(() => []);
 console.log(questionSet);
 
 function fetchQuestions(q_csv, book){
@@ -54,12 +66,15 @@ function fetchQuestions(q_csv, book){
             Papa.parse(csvText, {
                 header: true, // Use the first row as header
                 complete: function(results, file) {
-                    console.log("Parsing complete:", results, file);
+                    console.log(`Parsing complete ${book}:`, results, file);
                     // put each question into the correct inner array
                     let questions = results.data;
                     for (let i = 0; i < questions.length; i++){
                         let chapter = parseInt(questions[i][CH]);
-                        if (!chapter) chapter = MAX_CHAPTERS[book];  // if no chapter is listed, add it to the last chapter in the book
+                        if (!chapter){
+                            console.log(`\nCSV Issue, likely missing chapter \nFile: ${q_csv} \nChapter: ${chapter} \nQuestion Number: ${i}`)
+                            chapter = MAX_CHAPTER[book];  // if no chapter is listed, add it to the last chapter in the book
+                        }
                         questionSet[book][chapter - 1].push(questions[i])     // add question to array for chapter in book
                     }
                 },
@@ -76,6 +91,10 @@ fetchQuestions(EXODUS_CSV, EXODUS);
 fetchQuestions(JOHN_CSV, JOHN);
 fetchQuestions(ROMANS_CSV, ROMANS);
 fetchQuestions(ESTHER_CSV, ESTHER);
+fetchQuestions(JONAH_CSV, JONAH);
+fetchQuestions(FIRST_TIMOTHY_CSV, FIRST_TIMOTHY);
+fetchQuestions(SECOND_TIMOTHY_CSV, SECOND_TIMOTHY);
+fetchQuestions(COLOSSIANS_CSV, COLOSSIANS);
 
 
 // USER INTERACTION
@@ -217,6 +236,22 @@ class Controls {
         let isEsther = document.getElementById('book4').checked;
         let estherMin = parseInt(document.getElementById('book4min').value);
         let estherMax = parseInt(document.getElementById('book4max').value);
+        
+        let isJonah = document.getElementById('book5').checked;
+        let jonahMin = parseInt(document.getElementById('book5min').value);
+        let jonahMax = parseInt(document.getElementById('book5max').value);
+        
+        let isFirstTimothy = document.getElementById('book6').checked;
+        let firstTimothyMin = parseInt(document.getElementById('book6min').value);
+        let firstTimothyMax = parseInt(document.getElementById('book6max').value);
+        
+        let isSecondTimothy = document.getElementById('book7').checked;
+        let secondTimothyMin = parseInt(document.getElementById('book7min').value);
+        let secondTimothyMax = parseInt(document.getElementById('book7max').value);
+        
+        let isColossians = document.getElementById('book8').checked;
+        let colossiansMin = parseInt(document.getElementById('book8min').value);
+        let colossiansMax = parseInt(document.getElementById('book8max').value);
 
         let isLimited = document.getElementById('qLimit').checked;
         let qLimit = document.getElementById('qLimitNum').value;
@@ -241,6 +276,26 @@ class Controls {
         if (isEsther){
             for (let i = estherMin - 1; i <= estherMax - 1; i++){
                 questionBank = questionBank.concat(questionSet[ESTHER][i]);
+            }
+        }
+        if (isJonah){
+            for (let i = jonahMin - 1; i <= jonahMax - 1; i++){
+                questionBank = questionBank.concat(questionSet[JONAH][i]);
+            }
+        }
+        if (isFirstTimothy){
+            for (let i = firstTimothyMin - 1; i <= firstTimothyMax - 1; i++){
+                questionBank = questionBank.concat(questionSet[FIRST_TIMOTHY][i]);
+            }
+        }
+        if (isSecondTimothy){
+            for (let i = secondTimothyMin - 1; i <= secondTimothyMax - 1; i++){
+                questionBank = questionBank.concat(questionSet[SECOND_TIMOTHY][i]);
+            }
+        }
+        if (isColossians){
+            for (let i = colossiansMin - 1; i <= colossiansMax - 1; i++){
+                questionBank = questionBank.concat(questionSet[COLOSSIANS][i]);
             }
         }
         if (isLimited){
@@ -442,6 +497,10 @@ class Controls {
         document.getElementById('book2').checked = document.getElementById('mobileBook2').checked;
         document.getElementById('book3').checked = document.getElementById('mobileBook3').checked;
         document.getElementById('book4').checked = document.getElementById('mobileBook4').checked;
+        document.getElementById('book5').checked = document.getElementById('mobileBook5').checked;
+        document.getElementById('book6').checked = document.getElementById('mobileBook6').checked;
+        document.getElementById('book7').checked = document.getElementById('mobileBook7').checked;
+        document.getElementById('book8').checked = document.getElementById('mobileBook8').checked;
 
         document.getElementById('book1min').value = document.getElementById('mobileBook1min').value;
         document.getElementById('book1max').value = document.getElementById('mobileBook1max').value;
@@ -451,6 +510,14 @@ class Controls {
         document.getElementById('book3max').value = document.getElementById('mobileBook3max').value;
         document.getElementById('book4min').value = document.getElementById('mobileBook4min').value;
         document.getElementById('book4max').value = document.getElementById('mobileBook4max').value;
+        document.getElementById('book5min').value = document.getElementById('mobileBook5min').value;
+        document.getElementById('book5max').value = document.getElementById('mobileBook5max').value;
+        document.getElementById('book6min').value = document.getElementById('mobileBook6min').value;
+        document.getElementById('book6max').value = document.getElementById('mobileBook6max').value;
+        document.getElementById('book7min').value = document.getElementById('mobileBook7min').value;
+        document.getElementById('book7max').value = document.getElementById('mobileBook7max').value;
+        document.getElementById('book8min').value = document.getElementById('mobileBook8min').value;
+        document.getElementById('book8max').value = document.getElementById('mobileBook8max').value;
 
         document.getElementById('qLimit').checked = document.getElementById('mobileQLimit').checked;
         document.getElementById('qLimitNum').value = document.getElementById('mobileQLimitNum').value;

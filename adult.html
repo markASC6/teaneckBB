@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teaneck BB</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="adult.css">
+    <script src="adult.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
 </head>
 <body>
@@ -13,7 +13,7 @@
         <nav>
             <ul id="top_header" class="headers">
                 <li id="teaneck"><a>Teaneck BB</a></li>
-                <li><a href="/adult.html" style="color: yellow;">Adults</a></li>
+                <li><a href="/index.html">Juniors</a></li>
                 <li><a href="https://docs.google.com/document/d/1xZjhAgM6ml43Y7dmH5Wpea3mLNmMMN9rire9coTg3gk/edit?usp=sharing">Schedule</a></li>
                 <li><a href="https://docs.google.com/document/d/1tMvOFzhJ9-P3uXyUp56tGY0EH6mSGAAMeqrwZvc6D2Q/edit?usp=sharing">Lists in Exodus and John</a></li>
                 <!-- <li><a href="#">Link 2</a></li>
@@ -54,6 +54,38 @@
                     <input type="number" id="book4max" name="book4max" min="1" max="10" value="10">
                 </span>
                 <span class="book">
+                    <input type="checkbox" id="book5" name="book5" value="Jonah">
+                    <label for="book5" class="bookTitle">Jonah</label>
+                    <label for="book5min">From</label>
+                    <input type="number" id="book5min" name="book5min" min="1" max="4" value="1">
+                    <label for="book5max">To</label>
+                    <input type="number" id="book5max" name="book5max" min="1" max="4" value="4">
+                </span>
+                <span class="book">
+                    <input type="checkbox" id="book6" name="book6" value="1 Timothy">
+                    <label for="book6" class="bookTitle">1 Timothy</label>
+                    <label for="book6min">From</label>
+                    <input type="number" id="book6min" name="book6min" min="1" max="6" value="1">
+                    <label for="book6max">To</label>
+                    <input type="number" id="book6max" name="book6max" min="1" max="6" value="6">
+                </span>
+                <span class="book">
+                    <input type="checkbox" id="book7" name="book7" value="2 Timothy">
+                    <label for="book7" class="bookTitle">2 Timothy</label>
+                    <label for="book7min">From</label>
+                    <input type="number" id="book7min" name="book7min" min="1" max="4" value="1">
+                    <label for="book7max">To</label>
+                    <input type="number" id="book7max" name="book7max" min="1" max="4" value="4">
+                </span>
+                <span class="book">
+                    <input type="checkbox" id="book8" name="book8" value="Colossians">
+                    <label for="book8" class="bookTitle">Colossians</label>
+                    <label for="book8min">From</label>
+                    <input type="number" id="book8min" name="book8min" min="1" max="4" value="1">
+                    <label for="book8max">To</label>
+                    <input type="number" id="book8max" name="book8max" min="1" max="4" value="4">
+                </span>
+                <span class="book">
                     <input type="checkbox" id="qLimit" name="qLimit" value="Number of Qs">
                     <label for="qLimit" class="bookTitle">Number of Qs</label>
                     <label for="qLimitNum">#</label>
@@ -77,7 +109,7 @@
         </div>
         <div class="mobileBookHolder">
             <span class="mobileCheckHolder">
-                <input type="checkbox" id="mobileBook2" name="mobileBook2" value="John" checked>
+                <input type="checkbox" id="mobileBook2" name="mobileBook2" value="John">
                 <label for="mobileBook2" class="mobileBookTitle">John</label>
             </span>
             <span class="mobileMinMax">
@@ -88,7 +120,7 @@
         </div>
         <div class="mobileBookHolder">
             <span class="mobileCheckHolder">
-                <input type="checkbox" id="mobileBook3" name="mobileBook3" value="Romans" checked>
+                <input type="checkbox" id="mobileBook3" name="mobileBook3" value="Romans">
                 <label for="mobileBook3" class="mobileBookTitle">Romans</label>
             </span>
             <span class="mobileMinMax">
@@ -99,13 +131,57 @@
         </div>
         <div class="mobileBookHolder">
             <span class="mobileCheckHolder">
-                <input type="checkbox" id="mobileBook4" name="mobileBook4" value="Esther" checked>
+                <input type="checkbox" id="mobileBook4" name="mobileBook4" value="Esther">
                 <label for="mobileBook4" class="mobileBookTitle">Esther</label>
             </span>
             <span class="mobileMinMax">
                 <input type="number" id="mobileBook4min" name="mobileBook4min" min="1" max="10" value="1">
                 <label for="mobileBook4max">to</label>
                 <input type="number" id="mobileBook4max" name="mobileBook4max" min="1" max="10" value="10">
+            </span>
+        </div>
+        <div class="mobileBookHolder">
+            <span class="mobileCheckHolder">
+                <input type="checkbox" id="mobileBook5" name="mobileBook5" value="Jonah">
+                <label for="mobileBook5" class="mobileBookTitle">Jonah</label>
+            </span>
+            <span class="mobileMinMax">
+                <input type="number" id="mobileBook5min" name="mobileBook5min" min="1" max="4" value="1">
+                <label for="mobileBook5max">to</label>
+                <input type="number" id="mobileBook5max" name="mobileBook5max" min="1" max="4" value="4">
+            </span>
+        </div>
+        <div class="mobileBookHolder">
+            <span class="mobileCheckHolder">
+                <input type="checkbox" id="mobileBook6" name="mobileBook6" value="1 Timothy">
+                <label for="mobileBook6" class="mobileBookTitle">1 Timothy</label>
+            </span>
+            <span class="mobileMinMax">
+                <input type="number" id="mobileBook6min" name="mobileBook6min" min="1" max="6" value="1">
+                <label for="mobileBook6max">to</label>
+                <input type="number" id="mobileBook6max" name="mobileBook6max" min="1" max="6" value="6">
+            </span>
+        </div>
+        <div class="mobileBookHolder">
+            <span class="mobileCheckHolder">
+                <input type="checkbox" id="mobileBook7" name="mobileBook7" value="2 Timothy">
+                <label for="mobileBook7" class="mobileBookTitle">2 Timothy</label>
+            </span>
+            <span class="mobileMinMax">
+                <input type="number" id="mobileBook7min" name="mobileBook7min" min="1" max="4" value="1">
+                <label for="mobileBook7max">to</label>
+                <input type="number" id="mobileBook7max" name="mobileBook7max" min="1" max="4" value="4">
+            </span>
+        </div>
+        <div class="mobileBookHolder">
+            <span class="mobileCheckHolder">
+                <input type="checkbox" id="mobileBook8" name="mobileBook8" value="Colossians">
+                <label for="mobileBook8" class="mobileBookTitle">Colossians</label>
+            </span>
+            <span class="mobileMinMax">
+                <input type="number" id="mobileBook8min" name="mobileBook8min" min="1" max="4" value="1">
+                <label for="mobileBook8max">to</label>
+                <input type="number" id="mobileBook8max" name="mobileBook8max" min="1" max="4" value="4">
             </span>
         </div>
         <div class="mobileBookHolder">
