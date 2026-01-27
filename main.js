@@ -21,24 +21,25 @@ User-interaction:
 const Q = "Question";
 const A = "Answer";
 const CH = "Chapter";
-const EXODUS = 0;
-const JOHN = 1;
-const ROMANS = 2;
-const ESTHER = 3;
-const MAX_CHAPTER = [40, 21, 16, 10];
+const SECOND_SAMUEL = 0;
+const ACTS = 1;
+const ISAIAH = 2;
+const TITUS = 3;
+const MAX_CHAPTER = [4,4,4,4];
+// const MAX_CHAPTER = [24, 28, 66, 3];
 
-const EXODUS_CSV = 'data/exodusSample.csv';
-const JOHN_CSV = 'data/johnSample.csv';
-const ROMANS_CSV = 'data/romansSample.csv';
-const ESTHER_CSV = 'data/estherSample.csv';
+const SECOND_SAMUEL_CSV = 'data/secondSamuel.csv';
+const ACTS_CSV = 'data/acts.csv';
+const ISAIAH_CSV = 'data/isaiah.csv';
+const TITUS_CSV = 'data/titus.csv';
 
 // PRE-PROCESSING
 
 let questionSet = [[],[],[],[]];
-questionSet[EXODUS] = Array(MAX_CHAPTER[0]).fill().map(() => []);     // array of empty arrays with one for each chapter
-questionSet[JOHN] = Array(MAX_CHAPTER[1]).fill().map(() => []);
-questionSet[ROMANS] = Array(MAX_CHAPTER[2]).fill().map(() => []);
-questionSet[ESTHER] = Array(MAX_CHAPTER[3]).fill().map(() => []);
+questionSet[SECOND_SAMUEL] = Array(MAX_CHAPTER[0]).fill().map(() => []);     // array of empty arrays with one for each chapter
+questionSet[ACTS] = Array(MAX_CHAPTER[1]).fill().map(() => []);
+questionSet[ISAIAH] = Array(MAX_CHAPTER[2]).fill().map(() => []);
+questionSet[TITUS] = Array(MAX_CHAPTER[3]).fill().map(() => []);
 console.log(questionSet);
 
 function fetchQuestions(q_csv, book){
@@ -72,10 +73,10 @@ function fetchQuestions(q_csv, book){
             console.error('Error fetching the CSV file:', error);
         });
 }
-fetchQuestions(EXODUS_CSV, EXODUS);
-fetchQuestions(JOHN_CSV, JOHN);
-fetchQuestions(ROMANS_CSV, ROMANS);
-fetchQuestions(ESTHER_CSV, ESTHER);
+fetchQuestions(SECOND_SAMUEL_CSV, SECOND_SAMUEL);
+fetchQuestions(ACTS_CSV, ACTS);
+fetchQuestions(ISAIAH_CSV, ISAIAH);
+fetchQuestions(TITUS_CSV, TITUS);
 
 
 // USER INTERACTION
@@ -202,45 +203,45 @@ class Controls {
         questionBank = [];
     
         // Get user info
-        let isExodus = document.getElementById('book1').checked;
-        let exodusMin = parseInt(document.getElementById('book1min').value);
-        let exodusMax = parseInt(document.getElementById('book1max').value);
+        let isBook1 = document.getElementById('book1').checked;
+        let book1Min = parseInt(document.getElementById('book1min').value);
+        let book1Max = parseInt(document.getElementById('book1max').value);
 
-        let isJohn = document.getElementById('book2').checked;
-        let johnMin = parseInt(document.getElementById('book2min').value);
-        let johnMax = parseInt(document.getElementById('book2max').value);
+        let isBook2 = document.getElementById('book2').checked;
+        let book2Min = parseInt(document.getElementById('book2min').value);
+        let book2Max = parseInt(document.getElementById('book2max').value);
 
-        let isRomans = document.getElementById('book3').checked;
-        let romansMin = parseInt(document.getElementById('book3min').value);
-        let romansMax = parseInt(document.getElementById('book3max').value);
+        let isBook3 = document.getElementById('book3').checked;
+        let book3Min = parseInt(document.getElementById('book3min').value);
+        let book3Max = parseInt(document.getElementById('book3max').value);
         
-        let isEsther = document.getElementById('book4').checked;
-        let estherMin = parseInt(document.getElementById('book4min').value);
-        let estherMax = parseInt(document.getElementById('book4max').value);
+        let isBook4 = document.getElementById('book4').checked;
+        let book4Min = parseInt(document.getElementById('book4min').value);
+        let book4Max = parseInt(document.getElementById('book4max').value);
 
         let isLimited = document.getElementById('qLimit').checked;
         let qLimit = document.getElementById('qLimitNum').value;
 
         
-        if (isExodus){
+        if (isBook1){
             // Move specified questions from question set to question bank
-            for (let i = exodusMin - 1; i <= exodusMax - 1; i++){
-                questionBank = questionBank.concat(questionSet[EXODUS][i]);
+            for (let i = book1Min - 1; i <= book1Max - 1; i++){
+                questionBank = questionBank.concat(questionSet[SECOND_SAMUEL][i]);
             }
         }
-        if (isJohn){
-            for (let i = johnMin - 1; i <= johnMax - 1; i++){
-                questionBank = questionBank.concat(questionSet[JOHN][i]);
+        if (isBook2){
+            for (let i = book2Min - 1; i <= book2Max - 1; i++){
+                questionBank = questionBank.concat(questionSet[ACTS][i]);
             }
         }
-        if (isRomans){
-            for (let i = romansMin - 1; i <= romansMax - 1; i++){
-                questionBank = questionBank.concat(questionSet[ROMANS][i]);
+        if (isBook3){
+            for (let i = book3Min - 1; i <= book3Max - 1; i++){
+                questionBank = questionBank.concat(questionSet[ISAIAH][i]);
             }
         }
-        if (isEsther){
-            for (let i = estherMin - 1; i <= estherMax - 1; i++){
-                questionBank = questionBank.concat(questionSet[ESTHER][i]);
+        if (isBook4){
+            for (let i = book4Min - 1; i <= book4Max - 1; i++){
+                questionBank = questionBank.concat(questionSet[TITUS][i]);
             }
         }
         if (isLimited){
