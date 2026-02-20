@@ -25,7 +25,7 @@ const SECOND_SAMUEL = 0;
 const ACTS = 1;
 const ISAIAH = 2;
 const TITUS = 3;
-const MAX_CHAPTER = [4,4,4,4];
+const MAX_CHAPTER = [24,28,66,3];
 // const MAX_CHAPTER = [24, 28, 66, 3];
 
 const SECOND_SAMUEL_CSV = 'data/secondSamuel.csv';
