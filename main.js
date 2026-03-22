@@ -60,7 +60,7 @@ function fetchQuestions(q_csv, book){
                     let questions = results.data;
                     for (let i = 0; i < questions.length; i++){
                         let chapter = parseInt(questions[i][CH]);
-                        if (!chapter) chapter = MAX_CHAPTERS[book];  // if no chapter is listed, add it to the last chapter in the book
+                        if (!chapter) chapter = MAX_CHAPTER[book];  // if no chapter is listed, add it to the last chapter in the book
                         questionSet[book][chapter - 1].push(questions[i])     // add question to array for chapter in book
                     }
                 },
