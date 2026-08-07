@@ -268,6 +268,7 @@ class Controls {
         this.showQ();
     }
 
+
     
     left(){
         if (!this.started || this.isFinished) return;
@@ -409,6 +410,42 @@ class Controls {
         }
         Seq.setLength(questionBank.length);
         this.dropCount = 0;
+        this.showQ();
+    }
+
+    mockCompetition(){
+        this.started = true;
+        questionBank = [];
+
+        // Book 1: 2 Samuel 14-16
+        for (let i = 13; i < 15; i++){
+            questionBank = questionBank.concat(questionSet[SECOND_SAMUEL][i]);
+        }
+        console.log(questionBank)
+
+        // Book 2: Acts 1-4, 13-14
+        for (let i = 0; i < 3; i++){
+            questionBank = questionBank.concat(questionSet[ACTS][i]);
+        }
+        for (let i = 12; i < 13; i++){
+            questionBank = questionBank.concat(questionSet[ACTS][i]);
+        }
+
+        questionStock = questionBank.slice(); // Shallow copy
+
+        this.isFinished = false;
+        let isHidden = notecard.classList[0] == "hide";     // to-do: make this a class var
+        if (isHidden) notecard.classList.toggle("hide");    // take away .hide
+        
+        this.shuffleButton.textContent = "Shuffle";
+        if (this.shuffleButton.classList[0] == "clicked"){
+            this.shuffleButton.classList.toggle("clicked");
+        }
+        
+        Seq.unshuffle();     // resets Seq
+        Seq.setLength(questionBank.length);
+        this.dropCount = 0;
+
         this.showQ();
     }
 
