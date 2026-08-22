@@ -417,18 +417,25 @@ class Controls {
         this.started = true;
         questionBank = [];
 
-        // Book 1: 2 Samuel 14-16
-        for (let i = 13; i < 15; i++){
+        // Book 1: 2 Samuel 1-20
+        for (let i = 0; i < 19; i++){
             questionBank = questionBank.concat(questionSet[SECOND_SAMUEL][i]);
         }
         console.log(questionBank)
 
-        // Book 2: Acts 1-4, 13-14
-        for (let i = 0; i < 3; i++){
+        // Book 2: Acts 1-9, 13-19
+        for (let i = 0; i < 8; i++){
             questionBank = questionBank.concat(questionSet[ACTS][i]);
         }
-        for (let i = 12; i < 13; i++){
+        for (let i = 12; i < 18; i++){
             questionBank = questionBank.concat(questionSet[ACTS][i]);
+        }
+
+        // Book 3: Isaiah 1-10
+        for (let i = 0; i < 9; i++){
+            questionBank = questionBank.concat(questionSet[ISAIAH][i])
+            questionBank = questionBank.concat(questionSet[ISAIAH][i])
+            questionBank = questionBank.concat(questionSet[ISAIAH][i])
         }
 
         questionStock = questionBank.slice(); // Shallow copy
