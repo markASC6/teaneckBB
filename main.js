@@ -417,24 +417,25 @@ class Controls {
         this.started = true;
         questionBank = [];
 
-        // Book 1: 2 Samuel 1-20
-        for (let i = 21; i < 23; i++){
-            questionBank = questionBank.concat(questionSet[SECOND_SAMUEL][i]);
-        }
+        // Book 1: 2 Samuel 22,24
+        // for (let i = 0; i < 19; i++){
+        //     questionBank = questionBank.concat(questionSet[SECOND_SAMUEL][i]);
+        // }
+        questionBank = questionBank.concat(questionSet[SECOND_SAMUEL][21])
+        questionBank = questionBank.concat(questionSet[SECOND_SAMUEL][23])
+
         console.log(questionBank)
 
-        // Book 2: Acts 1-9, 13-19
-        for (let i = 7; i < 8; i++){
+        // Book 2: Acts 10-12, 19-20
+        for (let i = 9; i < 11; i++){
             questionBank = questionBank.concat(questionSet[ACTS][i]);
         }
-        for (let i = 16; i < 18; i++){
+        for (let i = 18; i < 19; i++){
             questionBank = questionBank.concat(questionSet[ACTS][i]);
         }
 
-        // Book 3: Isaiah 1-10
-        for (let i = 10; i < 11; i++){
-            questionBank = questionBank.concat(questionSet[ISAIAH][i])
-            questionBank = questionBank.concat(questionSet[ISAIAH][i])
+        // Book 3: Isaiah 10-14
+        for (let i = 9; i < 13; i++){
             questionBank = questionBank.concat(questionSet[ISAIAH][i])
         }
 
